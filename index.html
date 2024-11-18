@@ -224,6 +224,18 @@
 				reticle.setAttribute('visible', 'false');
 			});
 
+		scene.addEventListener('tick', () => {
+			const ballPosition = ball.object3D.position;
+			const hoopPosition = hoop.object3D.position;
+
+			// Simple check to see if the ball is within the hoop area
+			if (Math.abs(ballPosition.x - hoopPosition.x) < 0.3 &&
+				Math.abs(ballPosition.y - hoopPosition.y) < 0.3 &&
+				Math.abs(ballPosition.z - hoopPosition.z) < 0.3) {
+				updateScore(1); // Increase score by 1
+			}
+		});
+
 			reticle.addEventListener('select', function (e) {
 				const domOverlay = hasDomOverlay(scene.xrSession);
 				if (document.body.classList.contains("playing")) {
