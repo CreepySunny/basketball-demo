@@ -167,6 +167,13 @@
 			const tempQuaternion = new THREE.Quaternion();
 			const scene = document.querySelector('a-scene');
 
+		let score = 0;
+
+		function updateScore(points) {
+			score += points;
+			document.getElementById('score').textContent = score;
+		}
+
 			function hasDomOverlay(session) {
 				if (!session.domOverlayState) {
 					// DOM Overlay is not supported
