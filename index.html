@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<title>Basketball Game</title>
 		<style>
@@ -64,7 +65,8 @@
 				color: white;
 			}
 
-			#ar-instructions, #inline-instructions {
+		#ar-instructions,
+		#inline-instructions {
 				display: none;
 			}
 
@@ -81,12 +83,13 @@
 			body.playing #instructions {
 				visibility: hidden;
 			}
-
 		</style>
 		<script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
 		<script src="ar-components.js"></script>
-		<script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
 	</head>
+
 	<body class="inline">
 		<a-scene webxr="optionalFeatures: hit-test, dom-overlay; overlayElement:#overlay;" physics="debug: false">
 			<a-sphere id="ball" dynamic-body radius="0.1" color="orange" position="0.1 2.36 -1.5"></a-sphere>
@@ -191,7 +194,7 @@
 			function positionHoop() {
 				hoop.setAttribute("position", reticle.getAttribute("position"));
 				hoop.setAttribute("visible", true);
-				tempVector.set(0, 0 ,-1);
+			tempVector.set(0, 0, -1);
 				tempVector.applyQuaternion(reticle.object3D.quaternion);
 				tempQuaternion.setFromUnitVectors(tempVector, upVector);
 				hoop.object3D.quaternion.multiplyQuaternions(tempQuaternion, reticle.object3D.quaternion);
@@ -242,7 +245,7 @@
 					const pose = e.detail.pose;
 					ball.body.position.copy(pose.transform.position);
 					// ball.body.position.y += 0.2;
-					tempVector.set(0, 0 ,-5);
+				tempVector.set(0, 0, -5);
 					tempVector.applyQuaternion(pose.transform.orientation);
 					ball.body.velocity.copy(tempVector);
 					return;
@@ -286,4 +289,5 @@
 			button.addEventListener('touchstart', readyToStartPlay);
 		</script>
 	</body>
+
 </html>
